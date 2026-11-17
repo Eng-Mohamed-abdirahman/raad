@@ -43,6 +43,8 @@ npm test
 
 Add a dependency to one workspace: `npm install zod -w backend`.
 
+TypeScript: `tsc` is TypeScript 7 (installed as `@typescript/native`). The `typescript` package is aliased to `@typescript/typescript6`, because typescript-eslint and Next.js still need the TypeScript 6 API.
+
 Flutter apps:
 
 ```bash
