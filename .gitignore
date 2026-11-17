@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+.next/
+out/
+.turbo/
+*.tsbuildinfo
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+*.iml
+.idea/
+
+# Android signing
+android/key.properties
+**/android/key.properties
+*.jks
+*.keystore
+
+# Secrets and environment
+.env
+.env.*
+!.env.example
+env/*.json
+**/env/*.json
+
+# Logs and OS files
+npm-debug.log*
+*.log
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
