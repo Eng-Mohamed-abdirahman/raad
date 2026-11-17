@@ -1,13 +1,13 @@
 # Raad 🚌
 
 **Always know where the bus is.** School bus GPS tracking for parents, drivers and school admins.
-"Raad" is Somali for *trace / track*.
+"Raad" is Somali for _trace / track_.
 
-| Role | App | What they do |
-| --- | --- | --- |
-| Driver | Flutter driver app | Starts and ends trips; the phone sends GPS every 10–15 s during an active trip |
-| Parent | Flutter parent app | Sees the bus live on a map, the ETA to their stop, and push alerts |
-| School admin | Next.js dashboard | Manages buses, drivers, routes, stops, students and parents; watches all buses live |
+| Role         | App                | What they do                                                                        |
+| ------------ | ------------------ | ----------------------------------------------------------------------------------- |
+| Driver       | Flutter driver app | Starts and ends trips; the phone sends GPS every 10–15 s during an active trip      |
+| Parent       | Flutter parent app | Sees the bus live on a map, the ETA to their stop, and push alerts                  |
+| School admin | Next.js dashboard  | Manages buses, drivers, routes, stops, students and parents; watches all buses live |
 
 ## Folder structure
 
