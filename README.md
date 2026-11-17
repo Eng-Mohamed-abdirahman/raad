@@ -53,6 +53,6 @@ cd apps/parent_app && flutter run
 
 ## Conventions
 
-- Branches are named after the task: `p1-03-save-location`.
-- Commit and PR titles end with the task ID: `feat(api): save latest bus position [P1-03]`.
+- Branches describe the work only, with no task ID: `feat/save-bus-location`.
+- Commit and PR titles describe the change, with no task ID: `feat(api): save latest bus position`.
 - `main` only accepts pull requests with green CI.
