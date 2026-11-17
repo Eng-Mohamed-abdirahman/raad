@@ -13,16 +13,15 @@
 
 ```
 raad/
-├── apps/
-│   ├── api/          Node.js + Express + Socket.IO (TypeScript)
-│   ├── admin/        Next.js admin dashboard
-│   ├── driver_app/   Flutter driver app
-│   └── parent_app/   Flutter parent app
-├── packages/
-│   ├── shared/       @raad/shared — zod schemas + socket event types
+├── app/              Mobile apps (Flutter)
+│   ├── driver_app/   Driver app
+│   ├── parent_app/   Parent app
 │   └── raad_core/    Shared Flutter package
+├── backend/          Node.js + Express + Socket.IO API (TypeScript)
+├── frontend/         Next.js admin dashboard
+├── shared/           @raad/shared — zod schemas + socket event types
 ├── turbo.json        Turborepo task pipeline
-└── package.json      npm workspaces (api, admin, shared)
+└── package.json      npm workspaces (backend, frontend, shared)
 ```
 
 ## Requirements
@@ -35,20 +34,20 @@ Always install from the repo root (never inside a workspace folder):
 
 ```bash
 npm install
-npm run dev        # API + admin side by side
+npm run dev        # backend + frontend side by side
 npm run build
 npm run lint
 npm run typecheck
 npm test
 ```
 
-Add a dependency to one workspace: `npm install zod -w apps/api`.
+Add a dependency to one workspace: `npm install zod -w backend`.
 
 Flutter apps:
 
 ```bash
-cd apps/driver_app && flutter run
-cd apps/parent_app && flutter run
+cd app/driver_app && flutter run
+cd app/parent_app && flutter run
 ```
 
 ## Conventions

@@ -5,6 +5,6 @@ build
 .turbo
 .dart_tool
 package-lock.json
-apps/driver_app
-apps/parent_app
-packages/raad_core
+app/driver_app
+app/parent_app
+app/raad_core

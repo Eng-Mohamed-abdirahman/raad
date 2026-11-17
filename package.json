@@ -8,9 +8,9 @@
     "node": ">=24"
   },
   "workspaces": [
-    "apps/api",
-    "apps/admin",
-    "packages/shared"
+    "backend",
+    "frontend",
+    "shared"
   ],
   "scripts": {
     "dev": "turbo run dev",
