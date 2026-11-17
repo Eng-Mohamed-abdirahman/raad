@@ -1,0 +1,33 @@
+{
+  "name": "raad",
+  "version": "0.1.0",
+  "private": true,
+  "description": "School bus GPS tracking for parents, drivers and school admins.",
+  "packageManager": "npm@11.20.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "apps/api",
+    "apps/admin",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eng-Mohamed-abdirahman/raad.git"
+  },
+  "devDependencies": {
+    "prettier": "^3.10.1",
+    "turbo": "^2.11.11",
+    "typescript": "^7.0.2"
+  }
+}

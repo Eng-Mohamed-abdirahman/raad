@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+.next
+.turbo
+.dart_tool
+package-lock.json
+apps/driver_app
+apps/parent_app
+packages/raad_core
