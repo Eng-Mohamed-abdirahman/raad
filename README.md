@@ -43,6 +43,8 @@ npm test
 
 Add a dependency to one workspace: `npm install zod -w backend`.
 
+Design tokens: `shared/design/tokens.json` and `shared/design/icons.json` are the single source for colours, type, spacing, radius, shadows, statuses and icons (copied from the Figma design system). After changing them, run `npm run tokens` to regenerate the admin's CSS and icon files. The admin shows everything at `/design-system` (not linked, not indexed).
+
 TypeScript: `tsc` is TypeScript 7 (installed as `@typescript/native`). The `typescript` package is aliased to `@typescript/typescript6`, because typescript-eslint and Next.js still need the TypeScript 6 API.
 
 Flutter apps:
