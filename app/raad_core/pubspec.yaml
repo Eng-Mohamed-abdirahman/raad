@@ -1,0 +1,33 @@
+name: raad_core
+description: "Shared code for the Raad driver and parent apps: design system, models, API and socket clients."
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.12.2
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: ^2.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  # Fonts ship inside the app bundle so text renders correctly offline on first launch.
+  # All three are variable fonts (Google Fonts, SIL OFL 1.1, licences in fonts/).
+  # RaadText sets the `wght` axis explicitly for each style.
+  fonts:
+    - family: Outfit
+      fonts:
+        - asset: fonts/Outfit.ttf
+    - family: Inter
+      fonts:
+        - asset: fonts/Inter.ttf
+    - family: JetBrains Mono
+      fonts:
+        - asset: fonts/JetBrainsMono.ttf

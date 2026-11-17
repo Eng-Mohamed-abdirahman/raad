@@ -43,7 +43,7 @@ npm test
 
 Add a dependency to one workspace: `npm install zod -w backend`.
 
-Design tokens: `shared/design/tokens.json` and `shared/design/icons.json` are the single source for colours, type, spacing, radius, shadows, statuses and icons (copied from the Figma design system). After changing them, run `npm run tokens` to regenerate the admin's CSS and icon files. The admin shows everything at `/design-system` (not linked, not indexed).
+Design tokens: `shared/design/tokens.json` and `shared/design/icons.json` are the single source for colours, type, spacing, radius, shadows, statuses and icons (copied from the Figma design system). After changing them, run `npm run tokens` to regenerate the admin's CSS and icon files and the Flutter theme in `app/raad_core/lib/theme/generated/`. The admin shows everything at `/design-system` (not linked, not indexed); each Flutter app has the same screen behind a debug-only button in its app bar.
 
 TypeScript: `tsc` is TypeScript 7 (installed as `@typescript/native`). The `typescript` package is aliased to `@typescript/typescript6`, because typescript-eslint and Next.js still need the TypeScript 6 API.
 
@@ -53,6 +53,8 @@ Flutter apps:
 cd app/driver_app && flutter run
 cd app/parent_app && flutter run
 ```
+
+Application IDs are `com.example.raad_driver` and `com.example.raad_parent` for now. Set the real reverse-domain prefix before the first Play Store upload: Play rejects `com.example`, and the ID can never change after the first upload.
 
 ## Conventions
 
