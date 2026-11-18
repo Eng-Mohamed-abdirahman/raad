@@ -6,7 +6,9 @@ void main() {
   runApp(const RaadDriverApp());
 }
 
+/// The root widget for the Raad driver application.
 class RaadDriverApp extends StatelessWidget {
+  /// Creates the Raad driver application.
   const RaadDriverApp({super.key});
 
   @override
@@ -20,15 +22,20 @@ class RaadDriverApp extends StatelessWidget {
   }
 }
 
+/// The primary screen shown by the Raad driver application.
 class DriverHomeScreen extends StatelessWidget {
+  /// Creates the driver home screen.
   const DriverHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // The driver app uses the navy tile so drivers never open the wrong app.
-        leading: const Padding(padding: EdgeInsets.all(12), child: RaadMark(navyTile: true)),
+        // The navy tile helps drivers distinguish this app from the parent app.
+        leading: const Padding(
+          padding: EdgeInsets.all(12),
+          child: RaadMark(navyTile: true),
+        ),
         title: const Text('Raad Driver'),
         actions: [
           if (kDebugMode)
@@ -37,7 +44,11 @@ class DriverHomeScreen extends StatelessWidget {
               icon: const RaadIcon(RaadIcons.layers, color: RaadColors.white),
               onPressed: () => Navigator.of(
                 context,
-              ).push(MaterialPageRoute<void>(builder: (_) => const RaadDesignSystemScreen())),
+              ).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const RaadDesignSystemScreen(),
+                ),
+              ),
             ),
         ],
       ),
@@ -46,7 +57,7 @@ class DriverHomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Raad Driver', style: RaadText.h1),
+            const Text('Raad Driver', style: RaadText.h1),
             const SizedBox(height: RaadSpace.s2),
             Text(
               'Trips, stops and location sharing come next.',

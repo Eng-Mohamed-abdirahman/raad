@@ -6,7 +6,9 @@ void main() {
   runApp(const RaadParentApp());
 }
 
+/// The root widget for the Raad parent application.
 class RaadParentApp extends StatelessWidget {
+  /// Creates the Raad parent application.
   const RaadParentApp({super.key});
 
   @override
@@ -20,7 +22,9 @@ class RaadParentApp extends StatelessWidget {
   }
 }
 
+/// The primary screen shown by the Raad parent application.
 class ParentHomeScreen extends StatelessWidget {
+  /// Creates the parent home screen.
   const ParentHomeScreen({super.key});
 
   @override
@@ -36,7 +40,11 @@ class ParentHomeScreen extends StatelessWidget {
               icon: const RaadIcon(RaadIcons.layers, color: RaadColors.white),
               onPressed: () => Navigator.of(
                 context,
-              ).push(MaterialPageRoute<void>(builder: (_) => const RaadDesignSystemScreen())),
+              ).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const RaadDesignSystemScreen(),
+                ),
+              ),
             ),
         ],
       ),
@@ -45,7 +53,7 @@ class ParentHomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Raad', style: RaadText.h1),
+            const Text('Raad', style: RaadText.h1),
             const SizedBox(height: RaadSpace.s2),
             Text(
               'Always know where the bus is.',
