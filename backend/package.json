@@ -10,6 +10,7 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/server.js",
     "db:check": "tsx src/scripts/check-databases.ts",
+    "admin:create": "tsx src/scripts/create-admin.ts",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
