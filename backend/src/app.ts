@@ -4,6 +4,10 @@ import express, { type Express } from 'express';
 import helmet from 'helmet';
 import { pinoHttp } from 'pino-http';
 import { logger } from './lib/logger.js';
+import { errorHandler, notFoundHandler } from './middleware/error-handler.js';
+import { busesRouter } from './modules/buses/buses.router.js';
+import { driversRouter } from './modules/drivers/drivers.router.js';
+import { routesRouter } from './modules/routes/routes.router.js';
 
 /** Builds the Express app without listening, so tests can call it directly. */
 export function createApp(): Express {
@@ -19,6 +23,13 @@ export function createApp(): Express {
   app.get('/health', (_req, res) => {
     res.json({ ok: true });
   });
+
+  app.use('/api/drivers', driversRouter);
+  app.use('/api/routes', routesRouter);
+  app.use('/api/buses', busesRouter);
+
+  app.use(notFoundHandler);
+  app.use(errorHandler);
 
   return app;
 }

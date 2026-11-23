@@ -59,6 +59,18 @@ npm run db:check -w backend
 
 The API refuses to start if MongoDB, or Redis when `REDIS_URL` is set, is unreachable.
 
+### API
+
+| Resource | Endpoints                                                                                   |
+| -------- | ------------------------------------------------------------------------------------------- |
+| Drivers  | `GET /api/drivers`, `GET/PATCH/DELETE /api/drivers/:id`, `POST /api/drivers`                |
+| Routes   | `GET /api/routes`, `GET/PATCH/DELETE /api/routes/:id`, `POST /api/routes` (ordered `stops`) |
+| Buses    | `GET /api/buses`, `GET/PATCH/DELETE /api/buses/:id`, `POST /api/buses`                      |
+
+Request bodies are validated with the zod schemas in `@raad/shared` (`DriverInput`, `RouteInput`, `BusInput` and their `*Update` partials). A bus can have one driver and one route (`null` unassigns), and a driver can drive only one bus. A driver or route still assigned to a bus cannot be deleted. Errors always look like `{ "error": { "code", "message", "details"? } }`. These endpoints have no authentication yet.
+
+Backend tests run against an in-memory MongoDB (`mongodb-memory-server`), so they don't touch your local database.
+
 Design tokens: `shared/design/tokens.json` and `shared/design/icons.json` are the single source for colours, type, spacing, radius, shadows, statuses and icons (copied from the Figma design system). After changing them, run `npm run tokens` to regenerate the admin's CSS and icon files and the Flutter theme in `app/raad_core/lib/theme/generated/`. The admin shows everything at `/design-system` (not linked, not indexed); each Flutter app has the same screen behind a debug-only button in its app bar.
 
 TypeScript: `tsc` is TypeScript 7 (installed as `@typescript/native`). The `typescript` package is aliased to `@typescript/typescript6`, because typescript-eslint and Next.js still need the TypeScript 6 API.

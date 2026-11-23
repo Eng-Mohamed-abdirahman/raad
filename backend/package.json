@@ -13,6 +13,11 @@
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
+  "config": {
+    "mongodbMemoryServer": {
+      "downloadDir": "../node_modules/.cache/mongodb-memory-server"
+    }
+  },
   "devDependencies": {
     "@types/compression": "^1.8.1",
     "@types/cors": "^2.8.19",
