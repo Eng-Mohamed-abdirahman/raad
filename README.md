@@ -102,4 +102,8 @@ Application IDs are `com.example.raad_driver` and `com.example.raad_parent` for 
 
 - Branches describe the work only, with no task ID: `feat/save-bus-location`.
 - Commit and PR titles describe the change, with no task ID: `feat(api): save latest bus position`.
-- `main` only accepts pull requests with green CI.
+- `main` only accepts pull requests with green CI. CI (`.github/workflows/ci.yml`) runs on every pull request and push to `main`:
+  - **API, admin and shared package:** formatting, generated design tokens up to date, then `turbo run lint typecheck test build`.
+  - **Flutter apps:** `flutter analyze app` and `flutter test` in each package.
+
+  Run the same checks locally with `npm run format:check && npx turbo run lint typecheck test build`.
