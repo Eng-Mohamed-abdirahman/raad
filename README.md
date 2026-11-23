@@ -49,7 +49,7 @@ Copy `backend/.env.example` to `backend/.env` and fill in:
 
 - `MONGODB_URI`: a local MongoDB (install MongoDB Community Server; it runs as a Windows service), database `raad-dev`.
 - `REDIS_URL`: optional for now. Leave it unset and the API runs without Redis.
-- `JWT_SECRET`: any random string of at least 32 characters.
+- `JWT_SECRET`: required; signs admin sign-in tokens. Generate one with `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`. Changing it signs every admin out.
 
 Then check that the databases are reachable:
 
@@ -59,15 +59,27 @@ npm run db:check -w backend
 
 The API refuses to start if MongoDB, or Redis when `REDIS_URL` is set, is unreachable.
 
+### Admin accounts
+
+Create the first dashboard admin (the password is typed at a hidden prompt):
+
+```bash
+npm run admin:create -w backend -- --name "Full Name" --email you@example.com
+npm run admin:create -w backend -- --email you@example.com --reset-password
+```
+
 ### API
 
 | Resource | Endpoints                                                                                   |
 | -------- | ------------------------------------------------------------------------------------------- |
+| Auth     | `POST /api/auth/login`, `GET /api/auth/me`                                                  |
 | Drivers  | `GET /api/drivers`, `GET/PATCH/DELETE /api/drivers/:id`, `POST /api/drivers`                |
 | Routes   | `GET /api/routes`, `GET/PATCH/DELETE /api/routes/:id`, `POST /api/routes` (ordered `stops`) |
 | Buses    | `GET /api/buses`, `GET/PATCH/DELETE /api/buses/:id`, `POST /api/buses`                      |
 
-Request bodies are validated with the zod schemas in `@raad/shared` (`DriverInput`, `RouteInput`, `BusInput` and their `*Update` partials). A bus can have one driver and one route (`null` unassigns), and a driver can drive only one bus. A driver or route still assigned to a bus cannot be deleted. Errors always look like `{ "error": { "code", "message", "details"? } }`. These endpoints have no authentication yet.
+`POST /api/auth/login` with `{ "email", "password" }` returns `{ token, expiresAt, admin }`. Send the token as `Authorization: Bearer <token>` to every other endpoint; it lasts 8 hours. Ten failed sign-ins from one IP in 15 minutes return 429. Disabling an admin (`active: false`) locks them out at once.
+
+Request bodies are validated with the zod schemas in `@raad/shared` (`LoginInput`, `DriverInput`, `RouteInput`, `BusInput` and their `*Update` partials). A bus can have one driver and one route (`null` unassigns), and a driver can drive only one bus. A driver or route still assigned to a bus cannot be deleted. Errors always look like `{ "error": { "code", "message", "details"? } }`.
 
 Backend tests run against an in-memory MongoDB (`mongodb-memory-server`), so they don't touch your local database.
 

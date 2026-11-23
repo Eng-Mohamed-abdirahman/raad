@@ -7,7 +7,8 @@ const EnvSchema = z.object({
   LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace']).default('info'),
   MONGODB_URI: z.string().url().optional(),
   REDIS_URL: z.string().url().optional(),
-  JWT_SECRET: z.string().min(32).optional(),
+  /** Signs admin login tokens. At least 32 random characters. */
+  JWT_SECRET: z.string().min(32),
 });
 
 export type Env = z.infer<typeof EnvSchema>;
