@@ -10,8 +10,8 @@ export const BusInput = z.object({
     .min(1)
     .max(20)
     .transform((plate) => plate.toUpperCase()),
-  /** A short name people use, e.g. "Bus 3". */
-  label: z.string().trim().min(1).max(50).optional(),
+  /** A short name people use, e.g. "Bus 3". An empty string clears it. */
+  label: z.string().trim().max(50).optional(),
   capacity: z.number().int().min(1).max(100),
   /** The assigned driver; null unassigns. A driver can drive only one bus. */
   driverId: ObjectId.nullable().optional(),

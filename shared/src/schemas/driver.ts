@@ -9,7 +9,8 @@ export const DriverInput = z.object({
     .string()
     .trim()
     .regex(/^\+?[0-9]{7,15}$/, 'Must be 7 to 15 digits, optionally starting with +'),
-  licenseNumber: z.string().trim().min(1).max(50).optional(),
+  /** An empty string clears it. */
+  licenseNumber: z.string().trim().max(50).optional(),
   /** Defaults to true. */
   active: z.boolean().optional(),
 });
