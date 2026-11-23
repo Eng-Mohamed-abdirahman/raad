@@ -43,6 +43,22 @@ npm test
 
 Add a dependency to one workspace: `npm install zod -w backend`.
 
+### Development databases
+
+Copy `backend/.env.example` to `backend/.env` and fill in:
+
+- `MONGODB_URI`: a local MongoDB (install MongoDB Community Server; it runs as a Windows service), database `raad-dev`.
+- `REDIS_URL`: optional for now. Leave it unset and the API runs without Redis.
+- `JWT_SECRET`: any random string of at least 32 characters.
+
+Then check that the databases are reachable:
+
+```bash
+npm run db:check -w backend
+```
+
+The API refuses to start if MongoDB, or Redis when `REDIS_URL` is set, is unreachable.
+
 Design tokens: `shared/design/tokens.json` and `shared/design/icons.json` are the single source for colours, type, spacing, radius, shadows, statuses and icons (copied from the Figma design system). After changing them, run `npm run tokens` to regenerate the admin's CSS and icon files and the Flutter theme in `app/raad_core/lib/theme/generated/`. The admin shows everything at `/design-system` (not linked, not indexed); each Flutter app has the same screen behind a debug-only button in its app bar.
 
 TypeScript: `tsc` is TypeScript 7 (installed as `@typescript/native`). The `typescript` package is aliased to `@typescript/typescript6`, because typescript-eslint and Next.js still need the TypeScript 6 API.
