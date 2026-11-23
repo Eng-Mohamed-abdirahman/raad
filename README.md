@@ -68,6 +68,8 @@ npm run admin:create -w backend -- --name "Full Name" --email you@example.com
 npm run admin:create -w backend -- --email you@example.com --reset-password
 ```
 
+Then open the admin at http://localhost:3000 and sign in. The admin's server talks to the API at `RAAD_API_URL` (default `http://localhost:4000`, see `frontend/.env.example`) and keeps the token in an httpOnly `raad_session` cookie, so browser JavaScript never sees it.
+
 ### API
 
 | Resource | Endpoints                                                                                   |
